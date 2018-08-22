@@ -1,0 +1,3 @@
+gm_videotheque_homepage:
+    path:     /
+    defaults: { _controller: GMVideothequeBundle:Default:index }

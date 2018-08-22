@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Videotheque{% endblock %}
+
+{% block stylesheetsChild %}
+    <link rel="stylesheet" href="{{ asset('application/css/GMVideothequeBundle.css') }}" />
+{% endblock %}
+
+{% block javascriptsChild %}
+    <script src="{{ asset('application/js/GMVideothequeBundle/GMVideothequeBundle.js') }}"></script>
+{% endblock %}
+
+{% block flashbag %}
+    <div class="container margin-top-xs">
+        {{parent()}}
+    </div>
+{% endblock %}
+
+{% block app_bar_menu %}
+    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <script>window.location.href = '{{ path("fos_user_security_login") }}'</script>
+    {% endif %}
+    {% include 'GMVideothequeBundle::navigation.html.twig' %}
+{% endblock %}

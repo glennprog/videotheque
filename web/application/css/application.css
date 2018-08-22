@@ -1,0 +1,526 @@
+:root {
+    --main-bg-color: rgb(15, 13, 12);
+    --main-btn-width: 140px;
+    --main-btn-height: 40px;
+    --main-input-color: #383838;
+    --main-input-font-size: 20px;
+    --main-color-1: #17a2b8;
+    --main-color-2: #96d9e4;/*rgb(45, 166, 223);*//*rgb(54, 166, 218);*/
+    --main-color-3: #ababab;
+    --main-color-4: #d42626;
+    --main-color-5: #f1f1f1;
+    --main-h1-color: #ababab;
+    --main-h1-font-size: 21px;
+    --main-h2-font-size: 18px;
+
+    --main-text-color: #383838;
+}
+
+h1, h2{
+    /*
+    margin-top : 43px;
+    margin-bottom : 43px;
+    */
+    color: var(--main-h1-color);
+}
+
+.h1-app{
+    font-size: var(--main-h1-font-size);
+}
+
+.h2-app{
+    font-size: var(--main-h2-font-size);
+}
+
+.h1-app::first-letter {
+    /*color: #ff0000;*/
+    font-size: xx-large;
+}
+
+
+.h2-app::first-letter {
+    /*color: #ff0000;*/
+    font-size: 24px;
+}
+
+
+/*##################### Navigation bar  ###########################*/
+.navbar-nav li.active{
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+
+.navbar-nav li:hover{
+    color: #fff;
+    background-color: var(--main-color-1);
+    transition-duration: 0.3s;
+}
+
+.navbar-nav li{
+    margin-right: 12px;
+}
+
+
+/*##################### Navigation go back  #######################*/
+
+.back-list-xl{
+    background-color: #b5b5b5;/*#389986;*/
+    color: white;
+    padding: 8px 11px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.back-list-xl:hover{
+    text-decoration: none;
+    padding: 14px 25px;
+    transition-duration: 0.4s;
+}
+
+
+/*##################### FORM : label & input #####################*/
+.sub-label-app-sm{
+    color: #17a2b8d1; /*#b5b5b5;*/
+    font-size: 16px;
+    margin-bottom:0px;
+}
+
+.label-app-xl{
+    color: #17a2b8;
+    font-size: 50px;
+}
+
+.sub-label-app-xl{
+    color: #17a2b8d1; /*#b5b5b5;*/
+    font-size: 16px;
+}
+
+
+.input-app{
+    border: 0;
+    width: 100%;
+    outline:none;
+    color: var(--main-input-color);
+    font-size: var(--main-input-font-size);
+    transition-duration: 0.3s;
+}
+
+.input-app-border{
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+}
+
+.input-app:focus{
+    border-color: var(--main-color-2)
+}
+
+.text-input-app{
+    width: 100%;
+    outline:none;
+    color: var(--main-input-color);
+    /*border-color: rgb(20, 176, 197);*/
+    font-size: var(--main-input-font-size);
+    transition-duration: 0.05s;
+}
+
+.text-input-app-border{
+    border-width: 1px;
+    
+}
+
+.text-input-app:focus{
+    border-color: var(--main-color-2)
+}
+
+/*##################### LOGIN FORM : label & input ##################*/
+.login-form-app{
+    background-color: #e6e6e6;
+}
+
+.login-form-sm{
+    padding: 17px 17px;
+}
+
+.form-sm {
+    width: 70%;
+}
+
+
+/*##################### Link no decoration ################*/
+.link-no-decoration{
+    text-decoration: none;
+}
+
+.link-no-decoration:hover{
+    text-decoration: none;
+}
+
+
+/*##################### Margin :      #####################*/
+
+.full-margin-m{
+    margin-top : 60px;
+    margin-bottom : 60px;
+}
+
+.margin-top-m{
+    margin-top : 60px;
+}
+
+.margin-top-s{
+    margin-top : 30px;
+}
+
+.margin-top-xs{
+    margin-top : 10px;
+}
+
+.margin-bottom-m{
+    margin-bottom : 60px;
+}
+
+.margin-bottom-xs{
+    margin-bottom: 10px;
+}
+
+
+/*##################### Create/Edit action :      ##############*/
+.main-default-btn{
+    width: var(--main-btn-width);
+    height: auto;
+}
+
+.link-button-main{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    background-color: #c7c7c7a3;/*#4e8f99;*//*#17a2b8;*//*#389986;*/
+    text-align: center;
+    text-decoration: none;
+    width: 210px;
+    height: 30px;
+    padding: 4px;
+}
+
+.link-button-main:hover{
+    text-decoration: none;
+}
+
+.create-action:hover{
+    background-color: var(--main-color-1);
+    transition-duration: 0.5s;
+}
+
+.delete-action:hover{
+    background-color: var(--main-color-4);
+    transition-duration: 0.5s;
+}
+
+/*##################### Paginator :      ###################*/
+
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgba(151, 213, 241, 0.89);/*DodgerBlue;*/
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-container > div {
+    line-height: 1.6;
+    font-size: 14px;
+    /*color: #6c757d; *//*rgb(131, 129, 129);*/
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .flex-container {   
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.paginator-container-total-entities{
+    margin-left: 30px; 
+}
+
+.paginator-container-total-delete{
+    margin-left: 30px; 
+}
+
+.paginator-container-total-delete:hover{
+    text-decoration: none;
+}
+
+
+/* NEXT **/
+.paginator-container-prev{
+    margin-right: 30px;
+}
+
+.paginator-prev-fast{
+    margin-right: 10px;
+}
+
+.paginator-next-fast{
+    margin-left: 10px;
+}
+
+.paginator-prev:hover, .paginator-prev-fast:hover, .paginator-next:hover, .paginator-next-fast:hover{
+    text-decoration: none;
+}
+/*
+.paginator-container-prev:hover,{
+    text-decoration: none;
+}
+
+.paginator-next:hover{
+    text-decoration: none;
+}
+
+.paginator-container-prev{
+    margin-right: 12px;
+}
+*/
+
+
+/* INPUT **/  
+.paginator-container-page{
+    margin-left: 30px; 
+}
+
+.paginator-container-page > input{
+    width: 100px;
+    text-align: center;
+}
+
+.paginator-container-page-total > span{
+    margin-left: 7px;
+}
+
+.paginator-container-next_record_to_read{
+    margin-left: 30px; 
+}
+
+.paginator-container-count{
+    margin-left: 30px;
+}
+
+.paginator-container-count > select{
+    width: 100px;
+    height: auto;
+    /*background-color: rgb(214, 199, 199);*/
+}
+
+.paginator-current-page{
+    background-color: #17a2b8;
+    color: white;
+}
+
+
+
+.table-included-paginator{
+    margin-bottom: 0px;
+}
+
+
+.paginator-nav-not-active {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+    opacity: 0.5;
+}
+
+
+/*##################### Search Engine      #####################*/
+
+.search-container-option{
+    margin-left: 12px;
+    margin-right: 12px;
+    /*color: #695e5e;*/
+}
+
+.search-engine-options-elements{
+    padding-top: 12px;
+}
+
+.input-search-engine-options{
+    margin-bottom: 10px;
+}
+
+.search-engine-options-elements{
+    color: #695e5e;
+}
+
+
+/*##################### Modal :      #####################*/
+
+/* The Modal (background) */
+.gm-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.gm-modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 25%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.gm-modal-close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.gm-modal-close:hover,
+.gm-modal-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.gm-modal-header {
+    padding: 2px 16px;
+    background-color: #949494; /*5cb85c;*/
+    color: white;
+    text-align: center;
+}
+
+.gm-modal-header > h2{
+    color: white;
+}
+
+.gm-modal-body {padding: 2px 16px;}
+
+.gm-modal-footer {
+    padding: 2px 16px;
+    background-color: #333333;/*5cb85c*/;
+    color: white;
+    text-align: center;
+}
+
+/*##################### Others :      #####################*/
+
+table{
+    font-size: 14px;
+}
+
+table th{
+    /*text-align: center;*/
+    font-size: 18px;
+}
+
+th i{
+    margin-right: 10px;
+}
+
+th .fa-sort{
+    color: #bfbfbf;
+}
+
+
+.margin-top-bottom-sx{
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+
+.margin-top-bottom-xm{
+    margin-top : 100px;
+    margin-bottom : 100px;
+}
+
+
+.date-datepicker-boxsize{
+    width: 130px;
+    text-align: center;
+}
+
+.error-output-app{
+    color : rgb(214, 54, 54);
+    font-style: italic;
+    
+}
+
+.safe-margin-action{
+    margin-top : 27px;
+    margin-bottom : 27px;
+}
+
+.footer-text{
+    color:#787777;
+    font-size: 15px;
+}
+
+.gm-border-top{
+    border-top-style: solid;
+    border-width: 1px;
+    border-color: #dee2e670;
+}
+
+
+
+
+.search-container-data-input{
+    width: 50%;
+    text-align: center;
+}
+
+.search-container-data{
+    text-align: center;
+}
+
+.flex-search-container-data {
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: rgba(151, 213, 241, 0.89);/*DodgerBlue;*/
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.flex-search-container-data > div {
+    line-height: 1.6;
+    font-size: 14px;
+    width: 100%;
+    
+    /*color: #6c757d; *//*rgb(131, 129, 129);*/
+}
+

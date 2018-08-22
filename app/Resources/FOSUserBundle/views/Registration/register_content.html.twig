@@ -1,0 +1,55 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<h1 class="h1-app">{{'Inscrivez vous !'|trans}}</h1>
+
+<div class="full-margin-m">
+   {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register')}) }}
+   <div class="row full-margin-m">
+      <div class="col">
+         {{ form_label(form.lastname, 'Nom', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+         {{ form_errors(form.lastname)}}
+         {{ form_widget(form.lastname, {'attr': {'class': 'input-app input-app-border', 'required':'true', 'autocomplete':'off'} }) }}
+      </div>
+   </div>
+   <div class="row full-margin-m">
+      <div class="col">
+         {{ form_label(form.firstname, 'Prénom', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+         {{ form_errors(form.firstname)}}
+         {{ form_widget(form.firstname, {'attr': {'class': 'input-app input-app-border', 'required':'true', 'autocomplete':'off'} }) }}
+      </div>
+   </div>
+   <div class="row full-margin-m">
+      <div class="col">
+         {{ form_label(form.email, 'Email', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+         {{ form_errors(form.email)}}
+         {{ form_widget(form.email, {'attr': {'class': 'input-app input-app-border', 'required':'true', 'autocomplete':'off'} }) }}
+      </div>
+   </div>
+   <div class="row full-margin-m">
+      <div class="col">
+         {{ form_label(form.username, 'Identifiant : ', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+         {{ form_errors(form.username) }}
+         {{ form_widget(form.username, {'attr': {'class': 'input-app input-app-border', 'required':'true', 'autocomplete':'off'} }) }}
+      </div>
+   </div>
+   <div class="row full-margin-m">
+      <div class="col">
+         {{ form_label(form.plainPassword.first, 'Mot de passe : ', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+         {{ form_errors(form.plainPassword.first) }}
+         {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input-app input-app-border', 'required':'true'} }) }}
+      </div>
+   </div>
+   <div class="row full-margin-m">
+      <div class="col">
+         {{ form_label(form.plainPassword.second, 'Confirmation du mot de passe : ', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+         {{ form_errors(form.plainPassword.second) }}
+         {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input-app input-app-border', 'required':'true'} }) }}
+      </div>
+   </div>
+   <div class="row margin-top-m">
+      <div class="col">
+         <input class="btn btn-outline-info main-default-btn" type="submit" value="{{ 'Enregistrer'|trans }}" />
+      </div>
+   </div>
+   {{ form_end(form) }}
+</div>

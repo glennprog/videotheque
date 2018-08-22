@@ -1,0 +1,54 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="container">
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <script>window.location.href = '{{ path("homeapp") }}'</script>
+{% endif %}
+
+<h1 class="h1-app text-center">{{'Connecter vous !'|trans}}</h1>
+<div class="container login-form-app login-form-sm">
+    
+    <form action="{{ path("fos_user_security_check") }}" method="post">
+        {% if csrf_token %}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        {% endif %}
+
+        <div class="margin-top-bottom-sx">
+            <label for="username"  class="sub-label-app-sm">{{ 'Identifiant'|trans }}</label>
+            <input type="text" id="username" name="_username" class="input-app input-app-border" value="{{ last_username }}" required="required" autocomplete="username"/>
+        </div>
+
+        <div class="margin-top-bottom-sx">
+            <label for="password" class="sub-label-app-sm">{{ 'Mot de passe'|trans }}</label>
+            <input type="password" id="password" name="_password" class="input-app input-app-border" required="required" autocomplete="current-password"/>
+        </div>
+
+        <div class="margin-top-bottom-sx">
+            <label for="remember_me" class="sub-label-app-sm">{{ 'Se souvenir de moi'|trans }}</label>
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+        </div>
+
+        <div class="row">
+            <div class="col text-center">
+                <input type="submit" id="_submit" name="_submit" class="btn btn-outline-info main-default-btn" value="{{ 'Connexion'|trans }}" />
+            </div>
+        </div>
+    </form>
+
+    <hr class="margin-top-s">
+    
+    <div class="">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="h2-app">{{'Inscrivez vous si vous n\'avez pas de compte'|trans}}</h2>
+                <input type="submit" id="registration_at_login_form" name="registration_at_login_form" class="btn btn-outline-secondary main-default-btn" value="{{ 'Inscription'|trans }}" data-href="{{ path('fos_user_registration_register') }}"/>
+            </div>
+        </div>
+   </div>
+</div>
+</div>

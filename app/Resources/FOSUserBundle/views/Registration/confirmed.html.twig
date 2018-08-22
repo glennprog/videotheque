@@ -1,0 +1,97 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+<div class="container">
+   <div class="row">
+      <div class="col">
+         <h1 class="h1-app">{{ 'Inscription'|trans }}</h1>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col">
+         <p class="label-app-xl">{{ 'Inscription confirmée'|trans }}</p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col">
+         <table class="table table-sm">
+            <tbody>
+                <tr>
+                  <th>
+                     <p>{{'Nom'|trans}}</p>
+                  </th>
+                  <td>
+                     <p>{{user.lastname}}</p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>
+                     <p>{{'Prénom'|trans}}</p>
+                  </th>
+                  <td>
+                     <p>{{user.firstname}}</p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>
+                     <p>{{'Identifiant'|trans}}</p>
+                  </th>
+                  <td>
+                     <p>{{user.username}}</p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>
+                     <p>{{'Email'|trans}}</p>
+                  </th>
+                  <td>
+                     <p>{{user.email}}</p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>
+                     <p>{{'Statut compte'|trans}}</p>
+                  </th>
+                  <td>
+                     <p>
+                        {% if user.enabled %}
+                            {{'Votre compte est activé'|trans}}
+                        {% else %}
+                            {{'Votre compte est encore désactivé'|trans}}
+                        {% endif %} 
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <th>
+                     <p>{{'Mon GUID'|trans}}</p>
+                  </th>
+                  <td>
+                     <p>{{user.guid}}</p>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+
+   <div class="full-margin-m">
+    <div class="row">
+        <div class="col">
+            <a class="text-dark link-no-decoration" href="{{ path('fos_user_profile_edit') }}"><i class="fas fa-user-cog"></i> Modifier mon profil</a>
+        </div>
+    </div>
+    <div class="row margin-top-xs">
+        <div class="col">
+            <a class="text-dark link-no-decoration" href="{{ path('fos_user_change_password') }}"><i class="fas fa-key"></i> Changer mon mot de passe</a>
+        </div>
+    </div>
+   </div>
+
+   {% if targetUrl %}
+   <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+   {% endif %}
+</div>
+{% endblock fos_user_content %}

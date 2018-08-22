@@ -2,6 +2,7 @@
 # https://symfony.com/doc/current/service_container.html
 parameters:
     #parameter_name: value
+    admin_email: glenn.milingui@gmail.com
 
 services:
     # default configuration for services in *this* file
@@ -12,7 +13,7 @@ services:
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
-        public: false
+        public: true
 
     # makes classes in src/AppBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -33,3 +34,40 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    ############# Normally can be remove : for FOS USER #############
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+    
+    app.form.profile:
+        class: AppBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: app_user_profile }
+            
+    guid_generator:
+            class: AppBundle\Service\GuidGenerator
+
+    message_generator:
+            class: AppBundle\Service\MessageGenerator
+
+    form_manager:
+            class: AppBundle\Service\FormManager
+            arguments: ["@form.factory"]
+
+    watchdoglogger:
+            class: AppBundle\Service\WatchDogLogger
+            arguments: ["@request_stack", "@doctrine.orm.entity_manager", "@security.token_storage","@security.authorization_checker", "@message_generator"]
+
+    paginator_manager:
+            class: AppBundle\Service\PaginatorManager
+            arguments: ["@request_stack", "@router"]
+    
+    query_manager:
+            class: AppBundle\Service\QueryManager
+            arguments: ["@doctrine.orm.entity_manager", "@paginator_manager"]
+
+    search_engine_manager:
+            class: AppBundle\Service\SearchEngineManager
+            arguments: ["@request_stack"]
