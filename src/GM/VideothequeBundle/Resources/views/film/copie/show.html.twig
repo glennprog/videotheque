@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Film</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ film.id }}</td>
+            </tr>
+            <tr>
+                <th>Guid</th>
+                <td>{{ film.guid }}</td>
+            </tr>
+            <tr>
+                <th>Create_date</th>
+                <td>{% if film.createdate %}{{ film.createdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Update_date</th>
+                <td>{% if film.updatedate %}{{ film.updatedate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ film.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ film.description }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ film.url }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_previsualisation</th>
+                <td>{{ film.nombreprevisualisation }}</td>
+            </tr>
+            <tr>
+                <th>Nombre_vue</th>
+                <td>{{ film.nombrevue }}</td>
+            </tr>
+            <tr>
+                <th>Date_sortie</th>
+                <td>{% if film.datesortie %}{{ film.datesortie|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('film_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('film_edit', { 'id': film.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

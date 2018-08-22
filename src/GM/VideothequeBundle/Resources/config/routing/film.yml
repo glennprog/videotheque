@@ -1,0 +1,68 @@
+film_index:
+    path:     /
+    defaults: { _controller: "GMVideothequeBundle:Film:index", page: 1, count: 5, orderBy: null }
+    methods:  [GET, POST]
+
+film_pagination:
+    path:     /page/{page}
+    defaults: { _controller: "GMVideothequeBundle:Film:index", page: 1, count: 5, orderBy: null}
+    methods:  [GET, POST]
+
+film_show:
+    path:     /{id}/show
+    defaults: { _controller: "GMVideothequeBundle:Film:show" }
+    methods:  GET
+    requirements:
+        id: '\d+'
+
+film_new:
+    path:     /new
+    defaults: { _controller: "GMVideothequeBundle:Film:new" }
+    methods:  [GET, POST]
+
+film_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GMVideothequeBundle:Film:edit" }
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
+
+film_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GMVideothequeBundle:Film:delete" }
+    methods:  DELETE
+    requirements:
+        id: '\d+'
+
+film_delete_all:
+    path:     /all/delete
+    defaults: { _controller: "GMVideothequeBundle:Film:delete_all" }
+    methods:  [GET, POST]
+
+
+
+######################## REST API ########################
+rest_film_index:
+    path:     /api_v1/page/{page}/count/{count}
+    defaults: { _controller: "GMVideothequeBundle:RestFilm:index"}
+    methods:  [GET, POST]
+
+
+rest_film_show:
+    path:     /api_v1/{id}/show
+    defaults: { _controller: "GMVideothequeBundle:RestFilm:show"}
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
+
+rest_film_delete:
+    path:     /api_v1/{id}/delete
+    defaults: { _controller: "GMVideothequeBundle:RestFilm:delete" }
+    methods:  [DELETE, GET, POST]
+    requirements:
+        id: '\d+'
+
+rest_film_delete_all:
+    path:     /api_v1/all/delete
+    defaults: { _controller: "GMVideothequeBundle:RestFilm:delete_all" }
+    methods:  [GET, POST]

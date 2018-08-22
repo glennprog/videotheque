@@ -1,0 +1,58 @@
+{% if search_engine is defined %}
+        <div id="flex_search_container_data_{{search_container_entity}}" class="flex-search-container-data">
+            {% set searchEngineColumns_str = searchEngineColumns | join(';') %}
+            <div d="search_container_data_{{search_container_entity}}" class="search-container-data margin-top-m margin-bottom-m">
+                Recherche : <input type="text" class="search-container-data-input"
+                data-search="{{searchEngineColumns_str}}" 
+                name="search_container_data_input_{{search_container_entity}}" id="search_container_data_input_{{search_container_entity}}" placeholder="Recherche ..." {{dataSize == 0 ? 'disabled' : ''}}>
+                <!-- Trigger/Open The Modal -->
+                <i id="search_container_option_{{search_container_entity}}" class="fas fa-cogs search-container-option" data-micron="jerk"></i>
+            </div>
+        </div>
+        <!-- The Modal -->
+        <div id="search_engine_options_{{search_container_entity}}" class="gm-modal">
+            <!-- Modal content -->
+            <div id="gm_modal_content_{{search_container_entity}}" class="gm-modal-content">
+                <div class="gm-modal-header">
+                <span id="search_container_option_close_{{search_container_entity}}" class="gm-modal-close" data-modal-id="search_engine_options_{{search_container_entity}}">&times;</span>
+                <h2 class="h1-app">Search Engine Options</h2>
+                </div>
+                <div class="gm-modal-body">
+                    <div class="search-engine-options-elements">
+                        <div>
+                            <label class="radio-inline">Egale à ...
+                                <input type="radio" name="search_engine_options_like_{{search_container_entity}}" class="input-search-engine-options" value="equal" data-micron="jerk"  {{dataSize == 0 ? 'disabled' : ''}}>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio-inline">Commence par ...
+                                <input type="radio" name="search_engine_options_like_{{search_container_entity}}" class="input-search-engine-options" value="data_percentage" data-micron="jerk" checked  {{dataSize == 0 ? 'disabled' : ''}}>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio-inline">contient ...
+                                <input type="radio" name="search_engine_options_like_{{search_container_entity}}" class="input-search-engine-options" value="percentage_data_percentage" data-micron="jerk" {{dataSize == 0 ? 'disabled' : ''}}>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="search-engine-options-orderby search-engine-options-elements">
+                        <div>
+                            <label class="radio-inline">Ordre Croissant [A → Z]
+                                <input type="radio" name="search_engine_options_orderby_{{search_container_entity}}" class="input-search-engine-options" value="ASC" data-micron="jerk" checked  {{dataSize == 0 ? 'disabled' : ''}}>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="radio-inline">Ordre Décroissant [Z → A]
+                                <input type="radio" name="search_engine_options_orderby_{{search_container_entity}}" class="input-search-engine-options" value="DESC" data-micron="jerk"  {{dataSize == 0 ? 'disabled' : ''}}>
+                            </label>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="gm-modal-footer">
+                    <span>Search Engine</span>
+                </div>
+            </div>
+        </div>
+{% endif %}

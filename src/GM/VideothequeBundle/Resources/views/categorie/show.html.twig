@@ -1,0 +1,111 @@
+{% extends 'GMVideothequeBundle::layout.html.twig' %}
+
+{% block app_main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1-app">Catégorie : {{categorie.nom}} </h1>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col">
+                <table class="table table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ categorie.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Guid</th>
+                            <td>{{ categorie.guid }}</td>
+                        </tr>
+                        <tr>
+                            <th>Create_date</th>
+                            <td>{% if categorie.createdate %}{{ categorie.createdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Update_date</th>
+                            <td>{% if categorie.updatedate %}{{ categorie.updatedate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ categorie.nom }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container container-action border-bottom">
+        <div class="row">
+            <div class="col">
+                <a class="text-dark link-no-decoration" href="{{ path('categorie_edit', { 'id': categorie.id }) }}"><i class="fas fa-edit"></i> Edit</a>
+            </div>
+        </div>
+
+        {% if delete_form is defined %}
+        <div class="row">
+            <div class="col">
+                {{ form_start(delete_form) }}
+                    <i class="far fa-trash-alt"></i> <input class="bg-danger text-white border border-danger delete-alert" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col">
+                <a class="text-dark link-no-decoration" href="{{ path('categorie_index') }}"><i class="fas fa-arrow-left"></i> Back to the list</a>
+            </div>
+        </div>
+    </div>
+    {% if films['result'] is defined %}
+        <h2 class="h2-app margin-top-m">Film associés à la catégrorie</h2>
+        {% if films['result']|length == 0 %}
+            <p>Aucun films disponibles dans cette catégrorie.</p>
+            <a class="text-dark link-button-main" href="{{ path('film_new') }}"><i class="fas fa-plus-square"></i> Ajouter un films</a>
+        {% else %}
+            {% set search_engine = true %}
+            {% set search_container_entity = 'Film' %}
+            {% set sort_container_entity = 'Film' %}
+            {% if search_engine is defined and search_engine == true %}
+                {% set searchEngineColumns = ['titre', 'description'] %}
+                {% include 'searchEngine/template_search_engine_v1.html.twig' with {'search_engine' : search_engine, 'search_container_entity' : search_container_entity, 'searchEngineColumns' : searchEngineColumns, 'dataSize' : films['result'] | length } only %}
+            {% endif %}
+            <table id="table_{{sort_container_entity}}" class="table table-dark table-bordered table-hover table-sm table-included-paginator">
+                    <thead>
+                        <tr class="bg-info" data-entity="films">
+                            <th class="th-sortable" data-sort="titre"><i class="fas fa-sort ui-sort"></i>Titre</th>
+                            <th class="th-sortable" data-sort="description"><i class="fas fa-sort ui-sort"></i>Description</th>
+                            <th class="th-sortable" data-sort="date_sortie"><i class="fas fa-sort ui-sort"></i>Date_sortie</th>
+                        </tr>
+                    </thead>
+                    <tbody id="films_tbody">
+                    {% for film in films['result'] %}
+                        <tr class="gm-clickable-row" data-href="{{ path('film_show', { 'id': film.id }) }}">
+                            <td>{{ film.titre }}</td>
+                            <td>{{ film.description }}</td>
+                            <td>{% if film.datesortie %}{{ film.datesortie|date('Y-m-d') }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+            {% if films['paginator'] is defined %}
+                    {% include 'paginator/template_paginator_multiple_gm.html.twig' with {'paginator' : films['paginator'], 'dataSize' : films['result'] | length } only %}
+            {% endif %}
+            <a class="text-dark link-button-main margin-top-m" href="{{ path('film_new') }}"><i class="fas fa-plus-square"></i> Ajouter un films</a>
+        {% endif %}
+    {% endif %}
+
+    {% set sizeFilms = (films['result']|length == null) ? 0 : films['result']|length %}
+    <div class="categorie-data" style="display:none;", data-films={{sizeFilms}}>
+    </div>
+
+{% endblock %}
+
+{% block javascriptsChild %}
+    {{parent()}}
+    <script src="{{ asset('application/js/GMVideothequeBundle/categorie/categorie.show.js') }}"></script>
+{% endblock %}

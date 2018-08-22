@@ -1,0 +1,73 @@
+
+{% extends 'GMVideothequeBundle::layout.html.twig' %}
+
+{% block app_main_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="h1-app">Film : {{film.titre}} </h1>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col">
+                <table class="table table-sm">
+                    <tbody>
+                    <tr>
+                        <th>Catégorie</th>
+                        <td>{{ film.categorie }}</td>
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ film.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Guid</th>
+                        <td>{{ film.guid }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ film.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ film.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date_sortie</th>
+                        <td>{% if film.datesortie %}{{ film.datesortie|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container container-action border-bottom">
+        <div class="row">
+            <div class="col">
+                <a class="text-dark link-no-decoration" href="{{ path('film_edit', { 'id': film.id }) }}"><i class="fas fa-edit"></i> Edit</a>
+            </div>
+        </div>
+
+        {% if delete_form is defined %}
+        <div class="row">
+            <div class="col">
+                {{ form_start(delete_form) }}
+                    <i class="far fa-trash-alt"></i> <input class="bg-danger text-white border border-danger delete-alert" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col">
+                <a class="text-dark link-no-decoration" href="{{ path('film_index') }}"><i class="fas fa-arrow-left"></i> Back to the list</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascriptsChild %}
+    {{parent()}}
+    <script src="{{ asset('application/js/GMVideothequeBundle/film/film.show.js') }}"></script>
+{% endblock %}

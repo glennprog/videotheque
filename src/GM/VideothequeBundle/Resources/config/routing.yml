@@ -1,3 +1,16 @@
+gm_videotheque_home:
+    path:     /
+    defaults: { _controller: "GMVideothequeBundle:Home:home"}
+    methods:  [GET]
+
+gm_videotheque_categorie:
+    resource: "@GMVideothequeBundle/Resources/config/routing/categorie.yml"
+    prefix:   /categorie
+
+gm_videotheque_film:
+    resource: "@GMVideothequeBundle/Resources/config/routing/film.yml"
+    prefix:   /film
+
 gm_videotheque_homepage:
     path:     /
     defaults: { _controller: GMVideothequeBundle:Default:index }

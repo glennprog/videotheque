@@ -1,0 +1,59 @@
+{% if paginator is defined %}
+
+<div id="paginator_{{paginator['entity']}}" class = "margin-bottom-s paginator">
+   {% if paginator is defined %}
+   <div class="flex-container">
+      <div class="paginator-container-prev">
+         <a id="paginator_prev_fast_{{paginator['entity']}}" class="paginator-nav text-dark paginator-prev-fast {{ (paginator['paginator_prev'] == null) ? "paginator-nav-not-active" : "" }}" 
+            href={{paginator['paginator_prev_fast']}}><i class="fas fa-fast-backward" data-micron="jelly"></i>
+         </a>
+         <a id="paginator_prev_{{paginator['entity']}}"
+            class="paginator-nav text-dark paginator-prev {{ (paginator['paginator_prev'] == null) ? "paginator-nav-not-active" : "" }}" 
+            href={{paginator['paginator_prev']}}>
+            <i class="fas fa-backward" data-micron="jelly"></i>
+         </a>
+      </div>
+      <div class="paginator-container-next">
+         <a id="paginator_next_{{paginator['entity']}}" 
+            class="paginator-nav text-dark paginator-next {{ (paginator['paginator_next'] == null) ? "paginator-nav-not-active" : "" }}"
+            href={{paginator['paginator_next']}}><i class="fas fa-forward" data-micron="jelly"></i>
+         </a>
+         <a id="paginator_next_fast_{{paginator['entity']}}" class="paginator-nav text-dark paginator-next-fast {{ (paginator['paginator_next'] == null) ? "paginator-nav-not-active" : "" }}" 
+            href={{paginator['paginator_next_fast']}}><i class="fas fa-fast-forward" data-micron="jelly"></i>
+         </a>
+      </div>
+      <div class="paginator-container-count">
+         <span>{{'Max'|trans}} :</span>
+         <select name="paginator_container_count_name_{{paginator['entity']}}" id="paginator_container_count_{{paginator['entity']}}" {{dataSize == 0 ? 'disabled' : ''}}>
+         <option value="5" {% if paginator['count'] == 5%}selected{% endif %}>5</option>
+         <option value="10" {% if paginator['count'] == 10%}selected{% endif %}>10</option>
+         <option value="25" {% if paginator['count'] == 25%}selected{% endif %}>25</option>
+         <option value="50" {% if paginator['count'] == 50%}selected{% endif %}>50</option>
+         <option value="100" {% if paginator['count'] == 100%}selected{% endif %}>100</option>
+         <option value="200" {% if paginator['count'] == 200%}selected{% endif %}>200</option>
+         </select>
+      </div>
+      <div class="paginator-container-page">
+         Page <input type="text" name="paginator_container_page_name_{{paginator['entity']}}" id="paginator_container_page_{{paginator['entity']}}" placeholder="Entrer le numéro de la page"  {{dataSize == 0 ? 'disabled' : ''}} value = {{paginator['current_page']}}>
+      </div>
+      <div class="paginator-container-page-total">
+         {% if paginator['current_page'] <= paginator['total_page'] %}
+         <span id="paginator_container_page_total_text_{{paginator['entity']}}">de {{paginator['total_page']}}</span>
+         {% endif %}
+      </div>
+      <div class="paginator-container-next_record_to_read">
+         {% if paginator['next_record_to_read'] != null %}
+         <span id="paginator_container_next_record_to_read_text_{{paginator['entity']}}">{{'Reste à lire'|trans}} : {{paginator['next_record_to_read']}}</span>
+         {% else %}
+         <span id="paginator_container_next_record_to_read_text_{{paginator['entity']}}">{{'Reste à lire : zéro'|trans}}</span>
+         {% endif %}
+      </div>
+      <div class="paginator-container-total-entities">
+         <span id="paginator_container_total_entities_text_{{paginator['entity']}}">{{'Total global'|trans}} : {{paginator['total_entities']}}</span>
+      </div>
+   </div>
+   {% endif %}
+</div>
+{% endif %}
+
+

@@ -1,0 +1,68 @@
+{% extends 'GMVideothequeBundle::layout.html.twig' %}
+
+{% block app_main_content %}
+    <div class="container">
+        <h1 class="h1-app">Editer la Catégorie</h1>
+        <div class="full-margin-m">
+            {{ form_start(edit_form) }}
+            <div class="row full-margin-m">
+                <div class="col">
+                    {{ form_label(edit_form.categorie, 'Catégorie du film', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+                    <div class="error-output-app">
+                    {{ form_errors(edit_form.categorie) }}
+                    </div>
+                    {{ form_widget(edit_form.categorie, {'attr': {'class': 'text-input-app text-input-app-border', 'autocomplete':'off'} }) }}
+                </div>
+            </div>
+            <div class="row full-margin-m">
+                <div class="col">
+                    {{ form_label(edit_form.titre, 'Nom', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+                    <div class="error-output-app">
+                    {{ form_errors(edit_form.titre)}}
+                    </div>
+                    {{ form_widget(edit_form.titre, {'attr': {'class': 'input-app input-app-border', 'autocomplete':'off', 'required':'true'} }) }}
+                </div>
+            </div>
+            <div class="row full-margin-m">
+                <div class="col">
+                    {{ form_label(edit_form.description, 'Description', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+                    <div class="error-output-app">
+                    {{ form_errors(edit_form.description) }}
+                    </div>
+                    {{ form_widget(edit_form.description, {'attr': {'class': 'text-input-app text-input-app-border', 'autocomplete':'off'} }) }}
+                </div>
+            </div>
+            <div class="row full-margin-m">
+                <div class="col">
+                    {{ form_label(edit_form.date_sortie, 'Date de sortie (yy/mm/dd)', {'label_attr': {'class': 'sub-label-app-sm'}}) }}
+                    <div class="error-output-app">
+                    {{ form_errors(edit_form.date_sortie) }}
+                    </div>
+                    {{ form_widget(edit_form.date_sortie, {'attr': {'class': 'input-app input-app-border date-datepicker date-datepicker-boxsize', 'autocomplete':'off'} }) }}
+                </div>
+            </div>
+            <div class="row margin-top-m">
+                <div class="col">
+                    <input class="btn btn-outline-info main-default-btn" type="submit" value="Save" />
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+            <div class="row margin-top-xs">
+                {% if delete_form is defined %}
+                    <div class="col">
+                        {{ form_start(delete_form) }}
+                            <input class="btn btn-outline-danger main-default-btn delete-alert" type="submit" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </div>
+                {% endif %}
+
+                <div class="col">
+                    <a class="float-right text-dark back-list-xl" href="{{ path('film_index') }}">Go to the list
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

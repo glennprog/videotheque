@@ -1,0 +1,53 @@
+{% extends 'GMVideothequeBundle::layout.html.twig' %}
+
+{% block app_main_content %}
+    {% set search_engine = true %}
+    {% set search_container_entity = 'Categorie' %}
+    {% set sort_container_entity = 'Categorie' %}
+    <div class="container">
+        <h1 class="h1-app">Categorie des films</h1>
+        {% if search_engine is defined and search_engine == true %}
+            {% set searchEngineColumns = ['nom'] %}
+            {% include 'searchEngine/template_search_engine_v1.html.twig' with {'search_engine' : search_engine, 'search_container_entity' : search_container_entity, 'searchEngineColumns' : searchEngineColumns, 'dataSize' : categories['result'] | length } only %}
+        {% endif %}
+        <table id="table_{{sort_container_entity}}" class="table table-dark table-bordered table-hover table-sm table-included-paginator">
+            <thead>
+                <tr class="bg-info" data-entity="categories">
+                    <th class="{{categories['result'] | length == 0 ? '' : 'th-sortable'}}" data-sort="nom"><i class="fas fa-sort-up ui-sort"></i>Nom</th>
+                </tr>
+            </thead>
+            <tbody id="categories_tbody">
+            {% for categorie in categories['result'] %}
+                <tr class="gm-clickable-row" data-href="{{ path('categorie_show', { 'id': categorie.id }) }}">
+                    <td>{{ categorie.nom }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if categories['paginator'] is defined %}
+            {% include 'paginator/template_paginator_multiple_gm.html.twig' with {'paginator' : categories['paginator'], 'dataSize' : categories['result'] | length } only %}
+        {% endif %}
+        <div class="row margin-top-m">
+            <div class="col">
+                <a class="text-dark link-button-main create-action" href="{{ path('categorie_new') }}" data-micron="jelly"><i class="fas fa-plus-square"></i> Ajouter une categorie</a>
+            </div>
+        </div>
+
+        {% if categories['result'] | length != 0 %}
+            <div class="row margin-top-s">
+                <div class="col">
+                    <a class="text-dark link-button-main delete-action delete-alert" href="{{ path('categorie_delete_all') }}" data-delete-alert-msg="Do you want to delete categorie (and all movies attached) ?"><i class="fas fa-trash"></i> Supprimer tous</a>
+                </div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div id="container_hight" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+{% endblock %}
+
+{% block javascriptsChild %}
+    {{parent()}}
+    <script src="{{ asset('application/js/GMVideothequeBundle/categorie/categorie.list.js') }}"></script>
+{% endblock %}

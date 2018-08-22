@@ -4,14 +4,14 @@ namespace GM\VideothequeBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class HomeControllerTest extends WebTestCase
 {
-    public function testIndex()
+    public function testHome() // testIndex
     {
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
 
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+        $this->assertContains('Home Videotheque Bundle', $client->getResponse()->getContent());
     }
 }

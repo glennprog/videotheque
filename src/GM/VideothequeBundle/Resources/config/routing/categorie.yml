@@ -1,0 +1,82 @@
+categorie_index:
+    path:     /
+    defaults: { _controller: "GMVideothequeBundle:Categorie:index"}
+    methods:  [GET, POST]
+
+categorie_pagination:
+    path:     /page/{page}
+    defaults: { _controller: "GMVideothequeBundle:Categorie:index", page: 1, count: 5}
+    methods:  [GET, POST]
+
+categorie_show:
+    path:     /{id}/show
+    defaults: { _controller: "GMVideothequeBundle:Categorie:show"}
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
+
+categorie_new:
+    path:     /new
+    defaults: { _controller: "GMVideothequeBundle:Categorie:new" }
+    methods:  [GET, POST]
+
+categorie_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GMVideothequeBundle:Categorie:edit" }
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
+
+categorie_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GMVideothequeBundle:Categorie:delete" }
+    methods:  DELETE
+    requirements:
+        id: '\d+'
+
+categorie_delete_all:
+    path:     /all/delete
+    defaults: { _controller: "GMVideothequeBundle:Categorie:delete_all" }
+    methods:  [GET, POST]
+
+
+
+######################## REST API ########################
+rest_categorie_index:
+    path:     /api_v1/page/{page}/count/{count}
+    defaults: { _controller: "GMVideothequeBundle:RestCategorie:index"}
+    methods:  [GET, POST]
+
+
+rest_categorie_show:
+    path:     /api_v1/{id}/show
+    defaults: { _controller: "GMVideothequeBundle:RestCategorie:show"}
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
+
+rest_categorie_delete:
+    path:     /api_v1/{id}/delete
+    defaults: { _controller: "GMVideothequeBundle:RestCategorie:delete" }
+    methods:  [DELETE, GET, POST]
+    requirements:
+        id: '\d+'
+
+rest_categorie_delete_all:
+    path:     /api_v1/all/delete
+    defaults: { _controller: "GMVideothequeBundle:RestCategorie:delete_all" }
+    methods:  [GET, POST]
+
+rest_show_film_par_categorie:
+    path:     /api_v1/films_par_categorie/{id}/page/{page}/count/{count}
+    defaults: { _controller: "GMVideothequeBundle:RestCategorie:showFilmParCategorie"}
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
+
+rest_show_film_par_categorie_default_page_count:
+    path:     /api_v1/films_par_categorie/{id}
+    defaults: { _controller: "GMVideothequeBundle:RestCategorie:showFilmParCategorie", "page": 1, "count": 5}
+    methods:  [GET, POST]
+    requirements:
+        id: '\d+'
